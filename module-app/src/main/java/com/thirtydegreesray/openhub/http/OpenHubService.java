@@ -2,7 +2,7 @@
 
 package com.thirtydegreesray.openhub.http;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.thirtydegreesray.openhub.mvp.model.Repository;
 import com.thirtydegreesray.openhub.mvp.model.TrendingLanguage;
@@ -30,7 +30,8 @@ public interface OpenHubService {
      * @param language language
      */
     @Headers("Cache-Control: public, max-age=86400")
-    @NonNull @GET("trending")
+    @NonNull
+    @GET("trending")
     Observable<Response<ArrayList<Repository>>> getTrendingRepos(
             @Query("since") String since,
             @Query("language") String language

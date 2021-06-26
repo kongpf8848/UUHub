@@ -1,12 +1,14 @@
 package com.thirtydegreesray.openhub.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
+import androidx.annotation.NonNull;
+
 import android.view.View;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.thirtydegreesray.dataautoaccess.annotation.AutoAccess;
 import com.thirtydegreesray.openhub.R;
 import com.thirtydegreesray.openhub.mvp.contract.base.IBaseContract;
@@ -31,7 +33,8 @@ public class LabelManageActivity extends SingleFragmentActivity<IBaseContract.Pr
 
     @AutoAccess String owner;
     @AutoAccess String repo;
-    @BindView(R.id.float_action_bn) FloatingActionButton floatingActionButton;
+    @BindView(R.id.float_action_bn)
+    FloatingActionButton floatingActionButton;
 
 
     @Override
@@ -39,6 +42,7 @@ public class LabelManageActivity extends SingleFragmentActivity<IBaseContract.Pr
         return LabelManageFragment.create(owner, repo);
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);

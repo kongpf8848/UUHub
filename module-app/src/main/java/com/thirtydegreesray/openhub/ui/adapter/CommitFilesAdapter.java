@@ -4,9 +4,9 @@ package com.thirtydegreesray.openhub.ui.adapter;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.AppCompatImageView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.core.content.ContextCompat;
 import android.view.View;
 import android.widget.TextView;
 
@@ -107,7 +107,8 @@ public class CommitFilesAdapter extends BaseAdapter<BaseViewHolder,
     }
 
     class FileViewHolder extends BaseViewHolder {
-        @BindView(R.id.status_type) AppCompatImageView statusType;
+        @BindView(R.id.status_type)
+        AppCompatImageView statusType;
         @BindView(R.id.file_name) TextView fileName;
         @BindView(R.id.additions_count) TextView additionsCount;
         @BindView(R.id.deletions_count) TextView deletionsCount;

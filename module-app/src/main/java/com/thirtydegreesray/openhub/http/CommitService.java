@@ -2,7 +2,7 @@
 
 package com.thirtydegreesray.openhub.http;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.thirtydegreesray.openhub.mvp.model.CommitsComparison;
 import com.thirtydegreesray.openhub.mvp.model.RepoCommit;
@@ -23,7 +23,8 @@ import rx.Observable;
 
 public interface CommitService {
 
-    @NonNull @GET("repos/{owner}/{repo}/commits")
+    @NonNull
+    @GET("repos/{owner}/{repo}/commits")
     Observable<Response<ArrayList<RepoCommit>>> getRepoCommits(
             @Header("forceNetWork") boolean forceNetWork,
             @Path("owner") String owner,

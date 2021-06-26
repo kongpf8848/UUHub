@@ -2,24 +2,26 @@
 
 package com.thirtydegreesray.openhub.ui.fragment.base;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
+
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.fragment.app.Fragment;
+
 import com.bumptech.glide.Glide;
+import com.google.android.material.snackbar.Snackbar;
 import com.thirtydegreesray.dataautoaccess.DataAutoAccess;
 import com.thirtydegreesray.openhub.AppApplication;
 import com.thirtydegreesray.openhub.R;
@@ -158,7 +160,7 @@ public abstract class BaseFragment<P extends IBaseContract.Presenter>
     @Override
     public void onLowMemory() {
         super.onLowMemory();
-        Glide.with(this).onLowMemory();
+        //Glide.with(this).onLowMemory();
     }
 
     public void onFragmentShowed() {

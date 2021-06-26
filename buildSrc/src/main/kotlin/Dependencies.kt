@@ -26,7 +26,7 @@ object Versions {
     const val CONSTRAINT_VERSION = "1.0.2"
     const val MULTIDEX_VERSION = "1.0.2"
     const val DATAAUTOACCESS_VERSION = "1.2.8"
-    const val BUTTERKNIFE_VERSION = "8.7.0"
+    const val BUTTERKNIFE_VERSION = "10.1.0"
     const val GREEN_DAO_VERSION="3.2.2"
     const val EVENT_BUS_VERSION="3.0.0"
     const val FILE_DOWNLOADER_VERSION="0.3.1"
@@ -74,6 +74,7 @@ object Versions {
     const val ANDROIDX_LIFECYCLE_ARCH_VERSION="2.1.0"
     const val ANDROIDX_VIEWPAGER_VERSION="1.1.0"
     const val ANDROIDX_VIEWPAGER2_VERSION="1.0.0"
+    const val ANDROIDX_BROWSER_VERSION="1.2.0"
 
     const val GOOGLE_PLAY_SERVICES_VERSION = "17.0.0"
     const val GOOGLE_FIREBASE_MESSAGING_VERSION = "17.3.0"
@@ -124,6 +125,7 @@ object AndroidX {
     const val lifecycleReactivestreamsKtx= "androidx.lifecycle:lifecycle-reactivestreams-ktx:${Versions.ANDROIDX_LIFECYCLE_VERSION}"
     const val arcCoreTesting="androidx.arch.core:core-testing:${Versions.ANDROIDX_LIFECYCLE_ARCH_VERSION}"
     const val viewPager2="androidx.viewpager2:viewpager2:${Versions.ANDROIDX_VIEWPAGER2_VERSION}"
+    const val browser="androidx.browser:browser:${Versions.ANDROIDX_BROWSER_VERSION}"
 
 }
 

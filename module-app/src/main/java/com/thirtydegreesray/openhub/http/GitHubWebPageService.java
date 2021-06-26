@@ -1,6 +1,6 @@
 package com.thirtydegreesray.openhub.http;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.thirtydegreesray.openhub.mvp.model.WikiFeedModel;
 
@@ -19,7 +19,8 @@ import rx.Observable;
 
 public interface GitHubWebPageService {
 
-    @NonNull @GET("{owner}/{repo}/wiki.atom")
+    @NonNull
+    @GET("{owner}/{repo}/wiki.atom")
     Observable<Response<WikiFeedModel>> getWiki(
             @Header("forceNetWork") boolean forceNetWork,
             @Path("owner") String owner,

@@ -1,9 +1,9 @@
 package com.thirtydegreesray.openhub.ui.widget;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
+import androidx.annotation.NonNull;
 
 import com.thirtydegreesray.openhub.AppConfig;
 import com.thirtydegreesray.openhub.AppData;

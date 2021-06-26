@@ -2,7 +2,7 @@
 
 package com.thirtydegreesray.openhub.http;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.thirtydegreesray.openhub.mvp.model.Issue;
 import com.thirtydegreesray.openhub.mvp.model.Repository;
@@ -23,7 +23,8 @@ import rx.Observable;
 public interface SearchService {
 
 //    https://api.github.com/search/users?q=Ray&sort=followers&order=desc
-    @NonNull @GET("search/users")
+    @NonNull
+    @GET("search/users")
     Observable<Response<SearchResult<User>>> searchUsers(
             @Query(value = "q", encoded = true) String query,
             @Query("sort") String sort,

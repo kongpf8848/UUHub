@@ -2,7 +2,7 @@
 
 package com.thirtydegreesray.openhub.http;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.thirtydegreesray.openhub.mvp.model.Branch;
 import com.thirtydegreesray.openhub.mvp.model.Event;
@@ -37,7 +37,8 @@ public interface RepoService {
     /**
      * List repositories being starred
      */
-    @NonNull @GET("users/{user}/starred")
+    @NonNull
+    @GET("users/{user}/starred")
     Observable<Response<ArrayList<Repository>>> getStarredRepos(
             @Header("forceNetWork") boolean forceNetWork,
             @Path("user") @NonNull String user,

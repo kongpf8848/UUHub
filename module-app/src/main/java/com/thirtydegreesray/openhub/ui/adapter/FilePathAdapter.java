@@ -3,8 +3,9 @@
 package com.thirtydegreesray.openhub.ui.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.AppCompatImageView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
+
 import android.view.View;
 import android.widget.TextView;
 
@@ -52,7 +53,8 @@ public class FilePathAdapter extends BaseAdapter<FilePathAdapter.ViewHolder, Fil
     }
 
     class ViewHolder extends BaseViewHolder {
-        @BindView(R.id.arrow) AppCompatImageView arrow;
+        @BindView(R.id.arrow)
+        AppCompatImageView arrow;
         @BindView(R.id.path) TextView path;
 
         public ViewHolder(@NonNull View itemView) {

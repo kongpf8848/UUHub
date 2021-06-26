@@ -1,9 +1,10 @@
 package com.thirtydegreesray.openhub.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.Menu;
 import android.view.View;
 
@@ -76,6 +77,7 @@ public class LanguagesEditorActivity extends
         }
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);

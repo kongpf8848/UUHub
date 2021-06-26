@@ -1,14 +1,13 @@
 package com.thirtydegreesray.openhub.ui.widget;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -17,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.thirtydegreesray.openhub.R;
 import com.thirtydegreesray.openhub.mvp.model.Label;
 import com.thirtydegreesray.openhub.ui.widget.colorChooser.ColorChooserDialog;
@@ -41,8 +42,10 @@ public class EditLabelDialog implements DialogInterface.OnDismissListener,
 
     private View contentView;
     @BindView(R.id.label_preview) TextView labelPreview;
-    @BindView(R.id.label_name_et) TextInputEditText labelNameEt;
-    @BindView(R.id.label_name_layout) TextInputLayout labelNameLayout;
+    @BindView(R.id.label_name_et)
+    TextInputEditText labelNameEt;
+    @BindView(R.id.label_name_layout)
+    TextInputLayout labelNameLayout;
     @BindView(R.id.label_color_et) TextInputEditText labelColorEt;
     @BindView(R.id.label_color_layout) TextInputLayout labelColorLayout;
     @BindView(R.id.colors_lay) LinearLayout colorsLay;

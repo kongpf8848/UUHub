@@ -1,7 +1,8 @@
 package com.thirtydegreesray.openhub.ui.adapter.base;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
+
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by ThirtyDegreesRay on 2017/11/22 17:10:50

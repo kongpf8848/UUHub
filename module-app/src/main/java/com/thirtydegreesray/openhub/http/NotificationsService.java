@@ -2,7 +2,7 @@
 
 package com.thirtydegreesray.openhub.http;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.thirtydegreesray.openhub.mvp.model.Notification;
 import com.thirtydegreesray.openhub.mvp.model.request.MarkNotificationReadRequestModel;
@@ -26,7 +26,8 @@ import rx.Observable;
 
 public interface NotificationsService {
 
-    @NonNull @GET("notifications")
+    @NonNull
+    @GET("notifications")
     Observable<Response<ArrayList<Notification>>> getMyNotifications(
             @Header("forceNetWork") boolean forceNetWork,
             @Query("all") boolean all,

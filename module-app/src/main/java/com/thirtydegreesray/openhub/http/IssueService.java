@@ -1,6 +1,6 @@
 package com.thirtydegreesray.openhub.http;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.thirtydegreesray.openhub.http.model.IssueRequestModel;
 import com.thirtydegreesray.openhub.mvp.model.Issue;
@@ -31,7 +31,8 @@ import rx.Observable;
 
 public interface IssueService {
 
-    @NonNull @GET("repos/{owner}/{repo}/issues")
+    @NonNull
+    @GET("repos/{owner}/{repo}/issues")
     @Headers("Accept: application/vnd.github.html,application/vnd.github.VERSION.raw")
     Observable<Response<ArrayList<Issue>>> getRepoIssues(
             @Header("forceNetWork") boolean forceNetWork,

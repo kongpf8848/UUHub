@@ -1,16 +1,17 @@
 package com.thirtydegreesray.openhub.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.util.Pair;
-import android.support.v7.app.AlertDialog;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.util.Pair;
+import androidx.fragment.app.Fragment;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.thirtydegreesray.openhub.AppData;
 import com.thirtydegreesray.openhub.R;
 import com.thirtydegreesray.openhub.common.GlideApp;
@@ -91,7 +93,8 @@ public class IssueDetailActivity extends BaseActivity<IssueDetailPresenter>
     @BindView(R.id.issue_state_img) ImageView issueStateImg;
     @BindView(R.id.issue_state_text) TextView issueStateText;
     @BindView(R.id.comment_bn) ZoomAbleFloatingActionButton commentBn;
-    @BindView(R.id.edit_bn) FloatingActionButton editBn;
+    @BindView(R.id.edit_bn)
+    FloatingActionButton editBn;
     @BindView(R.id.loader) ProgressBar loader;
 
     private IssueTimelineFragment issueTimelineFragment;
@@ -114,6 +117,7 @@ public class IssueDetailActivity extends BaseActivity<IssueDetailPresenter>
         return R.layout.activity_issue_detail;
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void initView(Bundle savedInstanceState) {
         super.initView(savedInstanceState);
@@ -141,6 +145,7 @@ public class IssueDetailActivity extends BaseActivity<IssueDetailPresenter>
         return true;
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -165,6 +170,7 @@ public class IssueDetailActivity extends BaseActivity<IssueDetailPresenter>
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void showIssue(final Issue issue) {
         setToolbarTitle(getString(R.string.issue).concat(" #").concat(String.valueOf(issue.getNumber())));
@@ -258,6 +264,7 @@ public class IssueDetailActivity extends BaseActivity<IssueDetailPresenter>
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onBackPressed() {
         editBn.setVisibility(View.GONE);

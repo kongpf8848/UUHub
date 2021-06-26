@@ -3,12 +3,13 @@
 package com.thirtydegreesray.openhub.ui.fragment.base;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -46,7 +47,8 @@ public abstract class ListFragment <P extends IBaseContract.Presenter, A extends
 
     @BindView(R.id.lay_tip) LinearLayout layTip;
     @BindView(R.id.tv_tip) TextView tvTip;
-    @BindView(R.id.error_image) AppCompatImageView errorImage;
+    @BindView(R.id.error_image)
+    AppCompatImageView errorImage;
 
     private int curPage = 1;
 

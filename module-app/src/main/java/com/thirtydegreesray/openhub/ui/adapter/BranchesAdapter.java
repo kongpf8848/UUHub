@@ -3,8 +3,9 @@
 package com.thirtydegreesray.openhub.ui.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.AppCompatImageView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
+
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -56,7 +57,8 @@ public class BranchesAdapter extends BaseAdapter<BranchesAdapter.ViewHolder, Bra
     class ViewHolder extends BaseViewHolder {
 
         @BindView(R.id.root_layout) LinearLayout rootLayout;
-        @BindView(R.id.icon) AppCompatImageView icon;
+        @BindView(R.id.icon)
+        AppCompatImageView icon;
         @BindView(R.id.name) TextView name;
 
         public ViewHolder(@NonNull View itemView) {

@@ -5,16 +5,17 @@ package com.thirtydegreesray.openhub.ui.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.fragment.app.Fragment;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.thirtydegreesray.openhub.R;
 import com.thirtydegreesray.openhub.common.GlideApp;
 import com.thirtydegreesray.openhub.inject.component.AppComponent;
@@ -91,7 +92,8 @@ public class CommitDetailActivity extends BaseActivity<CommitDetailPresenter>
     @BindView(R.id.deletions_count) TextView deletionsCount;
 
     @BindView(R.id.loader) ProgressBar loader;
-    @BindView(R.id.comment_bn) FloatingActionButton commentBn;
+    @BindView(R.id.comment_bn)
+    FloatingActionButton commentBn;
 
     @Override
     protected void setupActivityComponent(AppComponent appComponent) {
@@ -107,7 +109,8 @@ public class CommitDetailActivity extends BaseActivity<CommitDetailPresenter>
         super.initView(savedInstanceState);
         setToolbarBackEnable();
         setToolbarTitle(getString(R.string.commit));
-        commentBn.setVisibility(View.GONE);
+        //commentBn.setVisibility(View.GONE);
+        commentBn.hide();
     }
 
     @Override

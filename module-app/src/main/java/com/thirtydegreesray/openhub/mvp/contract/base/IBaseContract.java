@@ -6,8 +6,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * Created by ThirtyDegreesRay on 2017/8/11 9:56:42
@@ -61,7 +62,8 @@ public interface IBaseContract {
          */
         void onViewInitialized();
 
-        @Nullable Context getContext();
+        @Nullable
+        Context getContext();
     }
 
 }

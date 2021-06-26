@@ -4,11 +4,12 @@ package com.thirtydegreesray.openhub.ui.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.widget.AppCompatImageView;
 
 import com.thirtydegreesray.openhub.R;
 import com.thirtydegreesray.openhub.util.StringUtils;

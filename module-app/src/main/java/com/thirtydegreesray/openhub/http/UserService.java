@@ -2,7 +2,7 @@
 
 package com.thirtydegreesray.openhub.http;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.thirtydegreesray.openhub.mvp.model.Event;
 import com.thirtydegreesray.openhub.mvp.model.User;
@@ -27,7 +27,8 @@ import rx.Observable;
 
 public interface UserService {
 
-    @NonNull @GET("user")
+    @NonNull
+    @GET("user")
     Observable<Response<User>> getPersonInfo(
             @Header("forceNetWork") boolean forceNetWork
     );

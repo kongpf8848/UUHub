@@ -1,12 +1,13 @@
 package com.thirtydegreesray.openhub.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.widget.NestedScrollView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.core.widget.NestedScrollView;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -72,6 +73,7 @@ public class ReleaseInfoActivity extends BaseActivity<ReleaseInfoPresenter>
     @BindView(R.id.download_bn) FloatingActionButton downloadBn;
     @BindView(R.id.loader) ProgressBar loader;
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void showReleaseInfo(Release release) {
         downloadBn.setVisibility(View.VISIBLE);

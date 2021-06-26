@@ -5,15 +5,15 @@ package com.thirtydegreesray.openhub.ui.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
+import androidx.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.thirtydegreesray.dataautoaccess.annotation.AutoAccess;
 import com.thirtydegreesray.openhub.AppData;
 import com.thirtydegreesray.openhub.R;
@@ -42,8 +42,10 @@ import butterknife.OnClick;
 public class EditIssueActivity extends BaseActivity<EditIssuePresenter>
         implements IEditIssueContract.View, ChooseLabelsDialog.ChooseLabelsListener {
 
-    @BindView(R.id.title_edit) TextInputEditText titleEdit;
-    @BindView(R.id.title_layout) TextInputLayout titleLayout;
+    @BindView(R.id.title_edit)
+    TextInputEditText titleEdit;
+    @BindView(R.id.title_layout)
+    TextInputLayout titleLayout;
     @BindView(R.id.comment_edit) TextInputEditText commentEdit;
     @BindView(R.id.comment_layout) TextInputLayout commentLayout;
     @BindView(R.id.labels_text) TextView labelsText;
