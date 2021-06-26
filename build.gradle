@@ -1,12 +1,14 @@
 
 buildscript {
+
     repositories {
         jcenter()
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.0'
-        classpath 'com.novoda:gradle-build-properties-plugin:0.3'
+        classpath "com.android.tools.build:gradle:${Versions.PLUGIN_GRADLE_VERSION}"
+        classpath "com.novoda:gradle-build-properties-plugin:${Versions.PLUGIN_NOVODA_VERSION}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN_VERSION}"
     }
 }
 

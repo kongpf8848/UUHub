@@ -11,14 +11,14 @@ buildProperties {
 }
 
 android {
-    compileSdkVersion COMPILE_SDK_VERSION as int
-    buildToolsVersion BUILD_TOOLS_VERSION
+    compileSdkVersion Config.compileSdkVersion
+    buildToolsVersion Config.buildToolsVersion
     defaultConfig {
         applicationId "com.thirtydegreesray.openhub"
-        minSdkVersion MIN_SDK_VERSION as int
-        targetSdkVersion TARGET_SDK_VERSION as int
-        versionCode VERSION_CODE as int
-        versionName VERSION_NAME
+        minSdkVersion Config.minSdkVersion
+        targetSdkVersion Config.targetSdkVersion
+        versionCode Config.versionCode
+        versionName Config.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled false
@@ -100,75 +100,75 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testImplementation 'junit:junit:4.12'
+    testImplementation "junit:junit:${Versions.JUNIT_VERSION}"
 
 //    compile "com.android.support:support-annotations:${ANDROID_SUPPORT_VERSION}"
 
-    implementation "com.android.support:support-v4:${ANDROID_SUPPORT_VERSION}"
+    implementation "com.android.support:support-v4:${Versions.ANDROID_SUPPORT_VERSION}"
 //    compile "com.android.support:support-v13:${ANDROID_SUPPORT_VERSION}"
-    implementation "com.android.support:appcompat-v7:${ANDROID_SUPPORT_VERSION}"
-    implementation "com.android.support:recyclerview-v7:${ANDROID_SUPPORT_VERSION}"
-    implementation "com.android.support:design:${ANDROID_SUPPORT_VERSION}"
-    implementation "com.android.support:cardview-v7:${ANDROID_SUPPORT_VERSION}"
-    implementation "com.android.support:support-vector-drawable:${ANDROID_SUPPORT_VERSION}"
-    implementation "com.android.support:preference-v7:${ANDROID_SUPPORT_VERSION}"
-    implementation "com.android.support:preference-v14:${ANDROID_SUPPORT_VERSION}"
-    implementation "com.android.support:customtabs:${ANDROID_SUPPORT_VERSION}"
+    implementation "com.android.support:appcompat-v7:${Versions.ANDROID_SUPPORT_VERSION}"
+    implementation "com.android.support:recyclerview-v7:${Versions.ANDROID_SUPPORT_VERSION}"
+    implementation "com.android.support:design:${Versions.ANDROID_SUPPORT_VERSION}"
+    implementation "com.android.support:cardview-v7:${Versions.ANDROID_SUPPORT_VERSION}"
+    implementation "com.android.support:support-vector-drawable:${Versions.ANDROID_SUPPORT_VERSION}"
+    implementation "com.android.support:preference-v7:${Versions.ANDROID_SUPPORT_VERSION}"
+    implementation "com.android.support:preference-v14:${Versions.ANDROID_SUPPORT_VERSION}"
+    implementation "com.android.support:customtabs:${Versions.ANDROID_SUPPORT_VERSION}"
 
-    implementation "com.android.support.constraint:constraint-layout:${CONSTRAINT_VERSION}"
+    implementation "com.android.support.constraint:constraint-layout:${Versions.CONSTRAINT_VERSION}"
 //    compile "com.android.support:multidex:${MULTIDEX_VERSION}"
 
-    implementation "com.thirtydegreesray:dataautoaccess:${DATAAUTOACCESS_VERSION}"
-    annotationProcessor "com.thirtydegreesray:dataautoaccess-compiler:${DATAAUTOACCESS_VERSION}"
+    implementation "com.thirtydegreesray:dataautoaccess:${Versions.DATAAUTOACCESS_VERSION}"
+    annotationProcessor "com.thirtydegreesray:dataautoaccess-compiler:${Versions.DATAAUTOACCESS_VERSION}"
 
-    implementation "com.jakewharton:butterknife:${BUTTERKNIFE_VERSION}"
-    annotationProcessor "com.jakewharton:butterknife-compiler:${BUTTERKNIFE_VERSION}"
+    implementation "com.jakewharton:butterknife:${Versions.BUTTERKNIFE_VERSION}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${Versions.BUTTERKNIFE_VERSION}"
 
     //数据库工具
-    implementation "org.greenrobot:greendao:${GREEN_DAO_VERSION}"
+    implementation "org.greenrobot:greendao:${Versions.GREEN_DAO_VERSION}"
     //事件总线
-    implementation "org.greenrobot:eventbus:${EVENT_BUS_VERSION}"
+    implementation "org.greenrobot:eventbus:${Versions.EVENT_BUS_VERSION}"
     //文件下载
 
     //RxJava
-    implementation "io.reactivex:rxjava:${RXJAVA_VERSION}"
-    implementation "io.reactivex:rxandroid:${RXJAVA_VERSION}"
+    implementation "io.reactivex:rxjava:${Versions.RXJAVA_VERSION}"
+    implementation "io.reactivex:rxandroid:${Versions.RXJAVA_VERSION}"
 
     //Type-safe HTTP client for Android and Java by Square, Inc.
-    implementation "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}"
-    implementation "com.squareup.retrofit2:converter-gson:${RETROFIT_VERSION}"
-    implementation "com.squareup.retrofit2:adapter-rxjava:${RETROFIT_VERSION}"
-    implementation ("com.squareup.retrofit2:converter-simplexml:${RETROFIT_VERSION}"){
+    implementation "com.squareup.retrofit2:retrofit:${Versions.RETROFIT_VERSION}"
+    implementation "com.squareup.retrofit2:converter-gson:${Versions.RETROFIT_VERSION}"
+    implementation "com.squareup.retrofit2:adapter-rxjava:${Versions.RETROFIT_VERSION}"
+    implementation ("com.squareup.retrofit2:converter-simplexml:${Versions.RETROFIT_VERSION}"){
         exclude group: 'xpp3', module: 'xpp3'
         exclude group: 'stax', module: 'stax-api'
         exclude group: 'stax', module: 'stax'
     }
-    implementation "com.squareup.okhttp3:logging-interceptor:${OKHTTP_VERSION}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${Versions.OKHTTP_VERSION}"
 
     //dagger依赖注入
-    implementation "com.google.dagger:dagger:${DAGGER_VERSION}"
-    annotationProcessor "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
+    implementation "com.google.dagger:dagger:${Versions.DAGGER_VERSION}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${Versions.DAGGER_VERSION}"
 
-    implementation "com.tbruyelle.rxpermissions:rxpermissions:${RX_PERMISSION_VERSION}"
+    implementation "com.tbruyelle.rxpermissions:rxpermissions:${Versions.RX_PERMISSION_VERSION}"
 
-    implementation "com.github.bumptech.glide:glide:${GLIDE_VERSION}"
-    annotationProcessor "com.github.bumptech.glide:compiler:${GLIDE_VERSION}"
+    implementation "com.github.bumptech.glide:glide:${Versions.GLIDE_VERSION}"
+    annotationProcessor "com.github.bumptech.glide:compiler:${Versions.GLIDE_VERSION}"
 
 //    compile "com.makeramen:roundedimageview:${ROUNDED_IMAGEVIEW_VERSION}"
-    implementation "de.hdodenhof:circleimageview:${CIRCLE_IMAGEVIEW_VERSION}"
+    implementation "de.hdodenhof:circleimageview:${Versions.CIRCLE_IMAGEVIEW_VERSION}"
 
-    implementation "com.github.GrenderG:Toasty:${TOASTY_VERSION}"
-    implementation "com.github.daniel-stoneuk:material-about-library:${MATERIAL_ABOUT_VERSION}"
-    implementation "com.unstoppable:submitbutton:${SUBMIT_BUTTON_VERSION}"
+    implementation "com.github.GrenderG:Toasty:${Versions.TOASTY_VERSION}"
+    implementation "com.github.daniel-stoneuk:material-about-library:${Versions.MATERIAL_ABOUT_VERSION}"
+    implementation "com.unstoppable:submitbutton:${Versions.SUBMIT_BUTTON_VERSION}"
 
-    implementation "com.afollestad.material-dialogs:core:${MATERIAL_DIALOG_VERSION}"
-    implementation "com.afollestad.material-dialogs:commons:${MATERIAL_DIALOG_VERSION}"
+    implementation "com.afollestad.material-dialogs:core:${Versions.MATERIAL_DIALOG_VERSION}"
+    implementation "com.afollestad.material-dialogs:commons:${Versions.MATERIAL_DIALOG_VERSION}"
 
-    implementation "com.zzhoujay.richtext:richtext:${RICKTEXT_VERSION}"
+    implementation "com.zzhoujay.richtext:richtext:${Versions.RICKTEXT_VERSION}"
     implementation 'com.zzhoujay.glideimagegetter:glideimagegetter:1.0.5'
 
-    implementation "com.orhanobut:logger:${LOGGER_VERSION}"
-    implementation "com.timehop.stickyheadersrecyclerview:library:${STICKY_HEAD_VERSION}"
+    implementation "com.orhanobut:logger:${Versions.LOGGER_VERSION}"
+    implementation "com.timehop.stickyheadersrecyclerview:library:${Versions.STICKY_HEAD_VERSION}"
 
-    implementation "org.jsoup:jsoup:${JSOUP_VERSION}"
+    implementation "org.jsoup:jsoup:${Versions.JSOUP_VERSION}"
 }

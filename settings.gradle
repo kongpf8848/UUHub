@@ -1,1 +1,5 @@
-include ':app', ':daogenerator'
+rootProject.name = "UUHub"
+include ':lib_base'
+include ':module-app'
+include ':module-daogenerator'
+include ':module-common'
