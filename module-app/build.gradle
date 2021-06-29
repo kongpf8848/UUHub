@@ -14,7 +14,7 @@ android {
     compileSdkVersion Config.compileSdkVersion
     buildToolsVersion Config.buildToolsVersion
     defaultConfig {
-        applicationId "com.thirtydegreesray.openhub"
+        applicationId Config.applicationId
         minSdkVersion Config.minSdkVersion
         targetSdkVersion Config.targetSdkVersion
         versionCode Config.versionCode

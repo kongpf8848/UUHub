@@ -4,8 +4,7 @@ object Config{
 
     const val compileSdkVersion = 30
     const val buildToolsVersion = "30.0.2"
-    const val applicationProdId="www.TokenHouse.com"
-    const val applicationTestId="www.TokenHouse.com.test"
+    const val applicationId="io.github.kongpf8848"
     const val minSdkVersion = 21
     const val targetSdkVersion = 30
     val sourceCompatibilityVersion = JavaVersion.VERSION_1_8

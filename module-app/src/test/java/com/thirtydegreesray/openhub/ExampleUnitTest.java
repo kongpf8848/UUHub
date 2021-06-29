@@ -1,4 +1,4 @@
-package com.thirtydegreesray.openhub;
+package io.github.kongpf8848.uuhub;
 
 import org.junit.Test;
 

@@ -2,6 +2,7 @@ package io.github.kongpf8848.common.base
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import io.github.kongpf8848.baselib.swipeback.SwipBacActivity
 import io.github.kongpf8848.baselib.utils.LogUtils
 
@@ -69,6 +70,15 @@ open class BaseActivity : SwipBacActivity(){
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         LogUtils.d(TAG, "onRestoreInstanceState() called")
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }
