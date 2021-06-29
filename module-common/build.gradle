@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -30,11 +32,54 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
+    api project(':lib_base')
+    testImplementation BuildDependencies.junit
+    implementation BuildDependencies.kotlinStdlibJdk7
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.KOTLIN_VERSION}"
-    implementation "androidx.appcompat:appcompat:1.0.0"
-    testImplementation "junit:junit:${Versions.JUNIT_VERSION}"
+    api AndroidX.appCompat
+    api AndroidX.legacyV4
+    api AndroidX.legacyV13
+    api AndroidX.multidex
+    api AndroidX.material
+    api AndroidX.recyclerview
+    api AndroidX.preference
+    api AndroidX.cardview
+    api AndroidX.gridlayout
+    api AndroidX.annotationX
+    api AndroidX.constraintlayout
+    api AndroidX.paging
+    api AndroidX.work
+    api AndroidX.core
+    api AndroidX.coreKtx
+    api AndroidX.room
+    api AndroidX.roomKtx
+    kapt AndroidX.roomCompiler
+    api AndroidX.roomRxJava2
+    api AndroidX.coordinatorlayout
+    api AndroidX.databindingCommon
+    api AndroidX.databindingRuntime
+    api AndroidX.databindingAdapters
+    api AndroidX.activity
+    api AndroidX.activityKtx
+    api AndroidX.fragment
+    api AndroidX.fragmentKtx
+    api AndroidX.lifecycleViewmodelKtx
+    api AndroidX.lifecycleLivedataKtx
+    api AndroidX.lifecycleRuntimeKtx
+    api AndroidX.lifecycleViewmodelSavedstate
+    kapt AndroidX.lifecycleCompiler
+    api AndroidX.lifecycleCommonJava8
+    api AndroidX.lifecycleService
+    api AndroidX.lifecycleProcess
+    api AndroidX.lifecycleReactivestreamsKtx
+    api AndroidX.lifecycleProcess
+    api AndroidX.viewPager2
+
 }

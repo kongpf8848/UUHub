@@ -82,7 +82,8 @@ object Versions {
 }
 
 object BuildDependencies {
-
+    const val junit = "junit:junit:${Versions.JUNIT_VERSION}"
+    const val kotlinStdlibJdk7 = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.KOTLIN_VERSION}"
 }
 
 object AndroidX {
