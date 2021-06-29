@@ -1,6 +1,6 @@
 
 
-package com.thirtydegreesray.openhub.common;
+package io.github.kongpf8848.uuhub.common;
 
 import org.greenrobot.eventbus.EventBus;
 
