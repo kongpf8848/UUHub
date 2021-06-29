@@ -20,7 +20,7 @@ public enum  CustomTabsHelper {
     INSTANCE;
 
     private final String ACTION_CUSTOM_TABS_CONNECTION =
-            "androidx.browser.customtabs.CustomTabsService";
+            "android.support.customtabs.action.CustomTabsService";
 
     private final String CHROME_STABLE_PACKAGE = "com.android.chrome";
     private final String CHROME_BETA_PACKAGE = "com.chrome.beta";
