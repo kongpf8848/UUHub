@@ -39,7 +39,7 @@ android {
 }
 
 dependencies {
-    api project(':lib_base')
+    api project(':lib-base')
     testImplementation BuildDependencies.junit
     implementation BuildDependencies.kotlinStdlibJdk7
 

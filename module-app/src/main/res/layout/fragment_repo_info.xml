@@ -190,7 +190,7 @@
                     android:textSize="@dimen/text_large"
                     android:layout_marginBottom="@dimen/spacing_mini"
                     android:layout_marginStart="@dimen/spacing_normal"/>
-                <com.thirtydegreesray.openhub.ui.widget.webview.CodeWebView
+                <io.github.kongpf8848.uuhub.ui.widget.webview.CodeWebView
                     android:id="@+id/web_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

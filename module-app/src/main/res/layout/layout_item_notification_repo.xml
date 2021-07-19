@@ -37,7 +37,7 @@
             android:textColor="?colorAccent"
             android:layout_marginStart="@dimen/spacing_normal"/>
 
-        <com.thirtydegreesray.openhub.ui.widget.ToastAbleImageButton
+        <io.github.kongpf8848.uuhub.ui.widget.ToastAbleImageButton
             android:id="@+id/mark_as_read_bn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
