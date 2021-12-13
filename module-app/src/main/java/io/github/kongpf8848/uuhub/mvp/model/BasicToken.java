@@ -93,7 +93,7 @@ public class BasicToken {
 //        "token": "2d6b2205ccffb76fe32cd53314bf75c47369b0f1",
 //            "hashed_token": "2eb24cf25622f32fdf26761c3d9051813c6985faed9d457d5d5278cb2bfe70a2",
 //            "token_last_eight": "7369b0f1",
-//            "note": "com.thirtydegreesray.openhub",
+//            "note": "io.github.kongpf8848.uuhub",
 //            "note_url": null,
 //            "created_at": "2017-08-01T03:46:37Z",
 //            "updated_at": "2017-08-01T03:46:37Z",

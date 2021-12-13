@@ -27,10 +27,12 @@ import java.util.UUID;
 
 import javax.inject.Inject;
 
+import io.reactivex.functions.BiFunction;
+import io.reactivex.functions.Function;
 import okhttp3.ResponseBody;
 import retrofit2.Response;
-import rx.Observable;
-import rx.functions.Func1;
+import io.reactivex.Observable;
+
 
 /**
  * Created by ThirtyDegreesRay on 2017/8/9 21:42:47
@@ -99,9 +101,9 @@ public class RepositoryPresenter extends BasePresenter<IRepositoryContract.View>
                         }
                 );
         Observable<Response<ArrayList<Branch>>> observable = getRepoService().getBranches(owner, repoName)
-                .flatMap(new Func1<Response<ArrayList<Branch>>, Observable<Response<ArrayList<Branch>>>>() {
+                .flatMap(new Function<Response<ArrayList<Branch>>, Observable<Response<ArrayList<Branch>>>>() {
                     @Override
-                    public Observable<Response<ArrayList<Branch>>> call(
+                    public Observable<Response<ArrayList<Branch>>> apply(
                             Response<ArrayList<Branch>> arrayListResponse) {
                         branches = arrayListResponse.body();
                         return getRepoService().getTags(owner, repoName);

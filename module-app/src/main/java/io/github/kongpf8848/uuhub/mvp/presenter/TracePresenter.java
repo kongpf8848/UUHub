@@ -16,7 +16,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import rx.android.schedulers.AndroidSchedulers;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
  * Created by ThirtyDegreesRay on 2017/11/23 10:55:30
@@ -44,35 +44,35 @@ public class TracePresenter extends BasePresenter<ITraceContract.View>
     public void loadTraceList(int page) {
         mView.showLoading();
         final ArrayList<TraceExt> tempTraceList = new ArrayList<>();
-        daoSession.rxTx()
-                .run(() -> {
-                    List<Trace> traceListDb = daoSession.getTraceDao().queryBuilder()
-                            .orderDesc(TraceDao.Properties.LatestTime)
-                            .offset((page - 1) * 30)
-                            .limit(page * 30)
-                            .list();
-                    for (Trace trace : traceListDb) {
-                        TraceExt ext = TraceExt.generate(trace);
-                        if ("user".equals(trace.getType())) {
-                            LocalUser localUser = daoSession.getLocalUserDao().load(ext.getUserId());
-                            ext.setUser(User.generateFromLocalUser(localUser));
-                        } else {
-                            LocalRepo localRepo = daoSession.getLocalRepoDao().load(ext.getRepoId());
-                            ext.setRepository(Repository.generateFromLocalRepo(localRepo));
-                        }
-                        tempTraceList.add(ext);
-                    }
-                })
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(aVoid -> {
-                    if (traceList == null || page == 1) {
-                        traceList = tempTraceList;
-                    } else {
-                        traceList.addAll(tempTraceList);
-                    }
-                    mView.showTraceList(traceList);
-                    mView.hideLoading();
-                });
+//        daoSession.rxTx()
+//                .run(() -> {
+//                    List<Trace> traceListDb = daoSession.getTraceDao().queryBuilder()
+//                            .orderDesc(TraceDao.Properties.LatestTime)
+//                            .offset((page - 1) * 30)
+//                            .limit(page * 30)
+//                            .list();
+//                    for (Trace trace : traceListDb) {
+//                        TraceExt ext = TraceExt.generate(trace);
+//                        if ("user".equals(trace.getType())) {
+//                            LocalUser localUser = daoSession.getLocalUserDao().load(ext.getUserId());
+//                            ext.setUser(User.generateFromLocalUser(localUser));
+//                        } else {
+//                            LocalRepo localRepo = daoSession.getLocalRepoDao().load(ext.getRepoId());
+//                            ext.setRepository(Repository.generateFromLocalRepo(localRepo));
+//                        }
+//                        tempTraceList.add(ext);
+//                    }
+//                })
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(aVoid -> {
+//                    if (traceList == null || page == 1) {
+//                        traceList = tempTraceList;
+//                    } else {
+//                        traceList.addAll(tempTraceList);
+//                    }
+//                    mView.showTraceList(traceList);
+//                    mView.hideLoading();
+//                });
     }
 
     @Override

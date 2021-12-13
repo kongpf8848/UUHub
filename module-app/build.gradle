@@ -88,8 +88,6 @@ android {
 }
 
 repositories {
-    maven { url "https://jitpack.io" }
-    google()
     flatDir {
         dirs 'libs' //aar
     }
@@ -123,14 +121,12 @@ dependencies {
     implementation "org.greenrobot:eventbus:${Versions.EVENT_BUS_VERSION}"
     //文件下载
 
-    //RxJava
-    implementation "io.reactivex:rxjava:${Versions.RXJAVA_VERSION}"
-    implementation "io.reactivex:rxandroid:${Versions.RXJAVA_VERSION}"
 
-    //Type-safe HTTP client for Android and Java by Square, Inc.
-    implementation "com.squareup.retrofit2:retrofit:${Versions.RETROFIT_VERSION}"
-    implementation "com.squareup.retrofit2:converter-gson:${Versions.RETROFIT_VERSION}"
-    implementation "com.squareup.retrofit2:adapter-rxjava:${Versions.RETROFIT_VERSION}"
+    implementation BuildDependencies.rxjava2
+    implementation BuildDependencies.rxAndroid
+    implementation BuildDependencies.retrofit
+    implementation BuildDependencies.retrofitConverterGson
+    implementation BuildDependencies.retrofitAdapterRxjava2
     implementation ("com.squareup.retrofit2:converter-simplexml:${Versions.RETROFIT_VERSION}"){
         exclude group: 'xpp3', module: 'xpp3'
         exclude group: 'stax', module: 'stax-api'
@@ -142,7 +138,7 @@ dependencies {
     implementation "com.google.dagger:dagger:${Versions.DAGGER_VERSION}"
     annotationProcessor "com.google.dagger:dagger-compiler:${Versions.DAGGER_VERSION}"
 
-    implementation "com.tbruyelle.rxpermissions:rxpermissions:${Versions.RX_PERMISSION_VERSION}"
+    implementation "com.tbruyelle.rxpermissions2:rxpermissions:${Versions.RX_PERMISSION_VERSION}"
 
     implementation "com.github.bumptech.glide:glide:${Versions.GLIDE_VERSION}"
     annotationProcessor "com.github.bumptech.glide:compiler:${Versions.GLIDE_VERSION}"

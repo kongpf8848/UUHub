@@ -37,8 +37,8 @@
 -dontwarn javax.annotation.**
 -dontwarn javax.inject.**
 
--keep class com.thirtydegreesray.openhub.http.model.** { *; }
--keep class com.thirtydegreesray.openhub.mvp.model.** { *; }
+-keep class io.github.kongpf8848.uuhub.http.model.** { *; }
+-keep class io.github.kongpf8848.uuhub.mvp.model.** { *; }
 
 # DataAutoAccess
 -keep class com.thirtydegreesray.dataautoaccess.** { *; }
@@ -99,7 +99,7 @@ public static java.lang.String TABLENAME;
 # Gson
 -keep class com.google.gson.stream.** { *; }
 -keepattributes EnclosingMethod
--keep class com.thirtydegreesray.openhub.mvp.model.**{*;}
--keep class com.thirtydegreesray.openhub.dao.**{*;}
+-keep class io.github.kongpf8848.uuhub.mvp.model.**{*;}
+-keep class io.github.kongpf8848.uuhub.dao.**{*;}
 # SimpleXml
 -keep class org.simpleframework.xml.core.**{ *; }

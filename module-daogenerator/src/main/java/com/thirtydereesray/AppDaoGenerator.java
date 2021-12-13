@@ -9,7 +9,7 @@ import org.greenrobot.greendao.generator.Schema;
 public class AppDaoGenerator {
 
     public static void main(String...args){
-        Schema rootSchema = new Schema(5, "com.thirtydegreesray.openhub.dao");
+        Schema rootSchema = new Schema(5, "io.github.kongpf8848.uuhub.dao");
         addAuthUser(rootSchema);
         addTraceUser(rootSchema);
         addTraceRepo(rootSchema);

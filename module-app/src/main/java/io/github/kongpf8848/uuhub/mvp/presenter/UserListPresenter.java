@@ -28,7 +28,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import retrofit2.Response;
-import rx.Observable;
+import io.reactivex.Observable;
 
 /**
  * Created by ThirtyDegreesRay on 2017/8/16 17:38:43

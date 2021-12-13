@@ -10,12 +10,12 @@ import io.github.kongpf8848.uuhub.mvp.model.RepoCommitExt;
 
 import java.util.ArrayList;
 
+import io.reactivex.Observable;
 import retrofit2.Response;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
-import rx.Observable;
 
 /**
  * Created by ThirtyDegreesRay on 2017/10/17 13:13:33

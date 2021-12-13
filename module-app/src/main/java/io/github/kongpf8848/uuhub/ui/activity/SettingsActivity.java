@@ -113,7 +113,7 @@ public class SettingsActivity extends SingleFragmentActivity<SettingsPresenter, 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
 //      finish setting activity to avoid  java.io.NotSerializableException
-//      com.thirtydegreesray.openhub.ui.widget.colorChooser.ColorChooserPreference
+//      io.github.kongpf8848.uuhub.ui.widget.colorChooser.ColorChooserPreference
 //      android.os.Parcel.writeSerializable(Parcel.java:1761)
         if(recreated){
             super.onSaveInstanceState(outState);

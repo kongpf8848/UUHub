@@ -50,13 +50,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import retrofit2.Response;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-
 
 /**
  * BasePresenter
@@ -71,7 +70,7 @@ public abstract class BasePresenter<V extends IBaseContract.View> implements IBa
     //db Dao
     protected DaoSession daoSession;
 
-    private ArrayList<Subscriber<?>> subscribers;
+    private ArrayList<ObservableSource<?>> subscribers;
     private boolean isEventSubscriber = false;
     private boolean isViewInitialized = false;
 
@@ -113,12 +112,12 @@ public abstract class BasePresenter<V extends IBaseContract.View> implements IBa
     public void detachView() {
         mView = null;
         //view 取消绑定时，把请求取消订阅
-        for (Subscriber subscriber : subscribers) {
-            if (subscriber != null && !subscriber.isUnsubscribed()) {
-                subscriber.unsubscribe();
-                Logger.d(TAG, "unsubscribe:" + subscriber.toString());
-            }
-        }
+//        for (ObservableSource subscriber : subscribers) {
+//            if (subscriber != null && !subscriber.isUnsubscribed()) {
+//                subscriber.unsubscribe();
+//                Logger.d(TAG, "unsubscribe:" + subscriber.toString());
+//            }
+//        }
         if (isEventSubscriber) AppEventBus.INSTANCE.getEventBus().unregister(this);
     }
 
@@ -238,7 +237,7 @@ public abstract class BasePresenter<V extends IBaseContract.View> implements IBa
             @NonNull Observable<Response<T>> observable, @Nullable HttpSubscriber<T> subscriber) {
 
         if (subscriber != null) {
-            subscribers.add(subscriber);
+            //subscribers.add(subscriber);
             observable.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(subscriber);
@@ -325,7 +324,7 @@ public abstract class BasePresenter<V extends IBaseContract.View> implements IBa
     }
 
     public void rxDBExecute(@NonNull Runnable runnable){
-        daoSession.rxTx().run(runnable).subscribe();
+        //daoSession.rxTx().run(runnable).subscribe();
     }
 
 

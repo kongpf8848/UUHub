@@ -29,8 +29,9 @@ object Versions {
     const val GREEN_DAO_VERSION="3.2.2"
     const val EVENT_BUS_VERSION="3.0.0"
     const val FILE_DOWNLOADER_VERSION="0.3.1"
-    const val RXJAVA_VERSION="1.1.0"
-    const val RETROFIT_VERSION="2.1.0"
+    const val RXJAVA2_VERSION = "2.2.14"
+    const val RXANDROID_VERSION = "2.1.1"
+    const val RETROFIT_VERSION="2.2.0"
     const val DAGGER_VERSION="2.11"
     const val RX_PERMISSION_VERSION="0.9.4@aar"
     const val RETROLAMBDA_VERSION="2.3.0"
@@ -83,6 +84,12 @@ object Versions {
 object BuildDependencies {
     const val junit = "junit:junit:${Versions.JUNIT_VERSION}"
     const val kotlinStdlibJdk7 = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.KOTLIN_VERSION}"
+    const val rxjava2 = "io.reactivex.rxjava2:rxjava:${Versions.RXJAVA2_VERSION}"
+    const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.RXANDROID_VERSION}"
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.RETROFIT_VERSION}"
+    const val retrofitConverterScalars= "com.squareup.retrofit2:converter-scalars:${Versions.RETROFIT_VERSION}"
+    const val retrofitAdapterRxjava2 = "com.squareup.retrofit2:adapter-rxjava2:${Versions.RETROFIT_VERSION}"
+    const val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:${Versions.RETROFIT_VERSION}"
 }
 
 object AndroidX {

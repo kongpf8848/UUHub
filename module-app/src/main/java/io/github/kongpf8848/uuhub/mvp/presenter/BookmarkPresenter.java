@@ -16,7 +16,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import rx.android.schedulers.AndroidSchedulers;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
  * Created by ThirtyDegreesRay on 2017/11/22 15:59:45
@@ -44,35 +44,35 @@ public class BookmarkPresenter extends BasePresenter<IBookmarkContract.View>
     public void loadBookmarks(int page) {
         mView.showLoading();
         final ArrayList<BookmarkExt> tempBookmarks = new ArrayList<>();
-        daoSession.rxTx()
-                .run(() -> {
-                    List<Bookmark> bookmarkList = daoSession.getBookmarkDao().queryBuilder()
-                            .orderDesc(BookmarkDao.Properties.MarkTime)
-                            .offset((page - 1) * 30)
-                            .limit(page * 30)
-                            .list();
-                    for(Bookmark bookmark : bookmarkList){
-                        BookmarkExt ext = BookmarkExt.generate(bookmark);
-                        if("user".equals(bookmark.getType())){
-                            LocalUser localUser = daoSession.getLocalUserDao().load(ext.getUserId());
-                            ext.setUser(User.generateFromLocalUser(localUser));
-                        }else{
-                            LocalRepo localRepo = daoSession.getLocalRepoDao().load(ext.getRepoId());
-                            ext.setRepository(Repository.generateFromLocalRepo(localRepo));
-                        }
-                        tempBookmarks.add(ext);
-                    }
-                })
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(aVoid -> {
-                    if(bookmarks == null || page == 1){
-                        bookmarks = tempBookmarks;
-                    } else {
-                        bookmarks.addAll(tempBookmarks);
-                    }
-                    mView.showBookmarks(bookmarks);
-                    mView.hideLoading();
-                });
+//        daoSession.()
+//                .run(() -> {
+//                    List<Bookmark> bookmarkList = daoSession.getBookmarkDao().queryBuilder()
+//                            .orderDesc(BookmarkDao.Properties.MarkTime)
+//                            .offset((page - 1) * 30)
+//                            .limit(page * 30)
+//                            .list();
+//                    for(Bookmark bookmark : bookmarkList){
+//                        BookmarkExt ext = BookmarkExt.generate(bookmark);
+//                        if("user".equals(bookmark.getType())){
+//                            LocalUser localUser = daoSession.getLocalUserDao().load(ext.getUserId());
+//                            ext.setUser(User.generateFromLocalUser(localUser));
+//                        }else{
+//                            LocalRepo localRepo = daoSession.getLocalRepoDao().load(ext.getRepoId());
+//                            ext.setRepository(Repository.generateFromLocalRepo(localRepo));
+//                        }
+//                        tempBookmarks.add(ext);
+//                    }
+//                })
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(aVoid -> {
+//                    if(bookmarks == null || page == 1){
+//                        bookmarks = tempBookmarks;
+//                    } else {
+//                        bookmarks.addAll(tempBookmarks);
+//                    }
+//                    mView.showBookmarks(bookmarks);
+//                    mView.hideLoading();
+//                });
 
     }
 
