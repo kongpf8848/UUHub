@@ -12,8 +12,9 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 
-import com.orhanobut.logger.Logger;
 import com.thirtydegreesray.dataautoaccess.DataAutoAccess;
+
+import io.github.kongpf8848.githubsdk.LoginService;
 import io.github.kongpf8848.uuhub.AppConfig;
 import io.github.kongpf8848.uuhub.AppData;
 import io.github.kongpf8848.uuhub.R;
@@ -22,7 +23,6 @@ import io.github.kongpf8848.uuhub.dao.DaoSession;
 import io.github.kongpf8848.uuhub.http.CommitService;
 import io.github.kongpf8848.uuhub.http.GitHubWebPageService;
 import io.github.kongpf8848.uuhub.http.IssueService;
-import io.github.kongpf8848.uuhub.http.LoginService;
 import io.github.kongpf8848.uuhub.http.NotificationsService;
 import io.github.kongpf8848.uuhub.http.OpenHubService;
 import io.github.kongpf8848.uuhub.http.RepoService;

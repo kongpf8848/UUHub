@@ -11,6 +11,9 @@ import retrofit2.http.Query;
 
 public interface LoginService {
 
+    /**
+     *获取Token
+     */
     @POST("login/oauth/access_token")
     @Headers("Accept: application/json")
     Observable<Response<OauthToken>> getAccessToken(

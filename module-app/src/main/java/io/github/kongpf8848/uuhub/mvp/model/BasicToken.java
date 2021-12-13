@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import io.github.kongpf8848.githubsdk.model.OauthToken;
+
 /**
  * Created on 2017/8/1.
  *

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import androidx.annotation.NonNull;
 
+import io.github.kongpf8848.githubsdk.model.OauthToken;
 import io.github.kongpf8848.uuhub.AppConfig;
 import io.github.kongpf8848.uuhub.AppData;
 import io.github.kongpf8848.uuhub.dao.AuthUser;
@@ -14,10 +15,8 @@ import io.github.kongpf8848.uuhub.dao.DaoSession;
 import io.github.kongpf8848.uuhub.http.core.HttpObserver;
 import io.github.kongpf8848.uuhub.http.core.HttpResponse;
 import io.github.kongpf8848.uuhub.http.core.HttpSubscriber;
-import io.github.kongpf8848.uuhub.http.model.AuthRequestModel;
 import io.github.kongpf8848.uuhub.mvp.contract.ILoginContract;
 import io.github.kongpf8848.uuhub.mvp.model.BasicToken;
-import io.github.kongpf8848.uuhub.mvp.model.OauthToken;
 import io.github.kongpf8848.uuhub.mvp.model.User;
 import io.github.kongpf8848.uuhub.mvp.presenter.base.BasePresenter;
 import io.github.kongpf8848.uuhub.util.StringUtils;
@@ -28,7 +27,6 @@ import java.util.UUID;
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
-import okhttp3.Credentials;
 import retrofit2.Response;
 
 /**
@@ -87,32 +85,32 @@ public class LoginPresenter extends BasePresenter<ILoginContract.View>
 
     @Override
     public void basicLogin(String userName, String password) {
-        AuthRequestModel authRequestModel = AuthRequestModel.generate();
-        String token = Credentials.basic(userName, password);
-        Observable<Response<BasicToken>> observable =
-                getLoginService(token).authorizations(authRequestModel);
-        HttpSubscriber<BasicToken> subscriber =
-                new HttpSubscriber<>(
-                        new HttpObserver<BasicToken>() {
-                            @Override
-                            public void onError(@NonNull Throwable error) {
-//                                mView.dismissProgressDialog();
-                                mView.onGetTokenError(getErrorTip(error));
-                            }
-
-                            @Override
-                            public void onSuccess(@NonNull HttpResponse<BasicToken> response) {
-                                BasicToken token = response.body();
-                                if (token != null) {
-                                    mView.onGetTokenSuccess(token);
-                                } else {
-                                    mView.onGetTokenError(response.getOriResponse().message());
-                                }
-
-                            }
-                        }
-                );
-        generalRxHttpExecute(observable, subscriber);
+//        AuthRequestModel authRequestModel = AuthRequestModel.generate();
+//        String token = Credentials.basic(userName, password);
+//        Observable<Response<BasicToken>> observable =
+//                getLoginService(token).authorizations(authRequestModel);
+//        HttpSubscriber<BasicToken> subscriber =
+//                new HttpSubscriber<>(
+//                        new HttpObserver<BasicToken>() {
+//                            @Override
+//                            public void onError(@NonNull Throwable error) {
+////                                mView.dismissProgressDialog();
+//                                mView.onGetTokenError(getErrorTip(error));
+//                            }
+//
+//                            @Override
+//                            public void onSuccess(@NonNull HttpResponse<BasicToken> response) {
+//                                BasicToken token = response.body();
+//                                if (token != null) {
+//                                    mView.onGetTokenSuccess(token);
+//                                } else {
+//                                    mView.onGetTokenError(response.getOriResponse().message());
+//                                }
+//
+//                            }
+//                        }
+//                );
+//        generalRxHttpExecute(observable, subscriber);
 //        mView.showProgressDialog(getLoadTip());
     }
 
