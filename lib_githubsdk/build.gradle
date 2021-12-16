@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.library'
+    id 'kotlin-android'
 }
 
 android {
@@ -32,10 +33,16 @@ dependencies {
     implementation AndroidX.appCompat
     implementation AndroidX.material
     testImplementation BuildDependencies.junit
+    implementation BuildDependencies.kotlinStdlibJdk7
 
     implementation BuildDependencies.retrofit
     implementation BuildDependencies.rxjava2
     implementation BuildDependencies.rxAndroid
     implementation BuildDependencies.retrofitAdapterRxjava2
     implementation BuildDependencies.retrofitConverterGson
+    implementation (BuildDependencies.retrofitConvertXml){
+        exclude group: 'xpp3', module: 'xpp3'
+        exclude group: 'stax', module: 'stax-api'
+        exclude group: 'stax', module: 'stax'
+    }
 }

@@ -106,6 +106,7 @@ dependencies {
     implementation AndroidX.annotationX
     implementation AndroidX.browser
 
+    api project(':lib_base')
     api project(':lib_githubsdk')
 
  //   implementation "com.android.support.constraint:constraint-layout:${Versions.CONSTRAINT_VERSION}"
@@ -129,7 +130,7 @@ dependencies {
     implementation BuildDependencies.retrofit
     implementation BuildDependencies.retrofitConverterGson
     implementation BuildDependencies.retrofitAdapterRxjava2
-    implementation ("com.squareup.retrofit2:converter-simplexml:${Versions.RETROFIT_VERSION}"){
+    implementation (BuildDependencies.retrofitConvertXml){
         exclude group: 'xpp3', module: 'xpp3'
         exclude group: 'stax', module: 'stax-api'
         exclude group: 'stax', module: 'stax'

@@ -37,6 +37,7 @@ dependencies {
     testImplementation BuildDependencies.junit
     implementation AndroidX.appCompat
     implementation BuildDependencies.kotlinStdlibJdk7
+    implementation BuildDependencies.gson
 
 
 }

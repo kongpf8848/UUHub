@@ -121,4 +121,10 @@ object DateHelper {
         val day = current[Calendar.DAY_OF_MONTH] - birthDay[Calendar.DAY_OF_MONTH]
         return day >= 0
     }
+
+    fun toDate(text:String,format:String):Date{
+        val sdf=SimpleDateFormat(format);
+        val date=sdf.parse(text);
+        return date;
+    }
 }

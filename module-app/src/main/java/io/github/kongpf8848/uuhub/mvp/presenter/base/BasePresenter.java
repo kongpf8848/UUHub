@@ -14,7 +14,8 @@ import androidx.fragment.app.Fragment;
 
 import com.thirtydegreesray.dataautoaccess.DataAutoAccess;
 
-import io.github.kongpf8848.githubsdk.LoginService;
+import io.github.kongpf8848.githubsdk.GitHubSdk;
+import io.github.kongpf8848.githubsdk.service.LoginService;
 import io.github.kongpf8848.uuhub.AppConfig;
 import io.github.kongpf8848.uuhub.AppData;
 import io.github.kongpf8848.uuhub.R;
@@ -56,6 +57,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 /**
  * BasePresenter
@@ -130,23 +132,7 @@ public abstract class BasePresenter<V extends IBaseContract.View> implements IBa
         return isViewInitialized;
     }
 
-    /**
-     * Retrofit
-     *
-     * @return Retrofit
-     */
 
-    protected LoginService getLoginService() {
-        return AppRetrofit.INSTANCE
-                .getRetrofit(AppConfig.GITHUB_BASE_URL, null)
-                .create(LoginService.class);
-    }
-
-    protected LoginService getLoginService(String token) {
-        return AppRetrofit.INSTANCE
-                .getRetrofit(AppConfig.GITHUB_API_BASE_URL, token)
-                .create(LoginService.class);
-    }
 
     protected UserService getUserService(String token) {
         return AppRetrofit.INSTANCE

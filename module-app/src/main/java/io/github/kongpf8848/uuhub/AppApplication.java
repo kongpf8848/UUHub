@@ -13,14 +13,23 @@ import android.os.Build;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
+
+import java.util.concurrent.TimeUnit;
+
+import io.github.kongpf8848.githubsdk.GitHubSdk;
+import io.github.kongpf8848.uuhub.http.core.AppRetrofit;
 import io.github.kongpf8848.uuhub.inject.component.AppComponent;
 import io.github.kongpf8848.uuhub.inject.component.DaggerAppComponent;
 import io.github.kongpf8848.uuhub.inject.module.AppModule;
 import io.github.kongpf8848.uuhub.service.NetBroadcastReceiver;
 import io.github.kongpf8848.uuhub.util.AppUtils;
+import io.github.kongpf8848.uuhub.util.FileUtil;
 import io.github.kongpf8848.uuhub.util.NetHelper;
 
 import io.github.kongpf8848.uuhub.BuildConfig;
+import okhttp3.Cache;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 
 /**
  * AppApplication
@@ -81,6 +90,20 @@ public class AppApplication extends Application {
     }
 
     private void initNetwork(){
+
+        int timeOut = AppConfig.HTTP_TIME_OUT;
+        Cache cache = new Cache(FileUtil.getHttpImageCacheDir(AppApplication.get()),
+                AppConfig.HTTP_MAX_CACHE_SIZE);
+
+        HttpLoggingInterceptor loggingInterceptor=new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(timeOut, TimeUnit.MILLISECONDS)
+                .addInterceptor(loggingInterceptor)
+                .cache(cache)
+                .build();
+        GitHubSdk.getInstance().client(okHttpClient).init();
+
         NetBroadcastReceiver receiver = new NetBroadcastReceiver();
         IntentFilter filter;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
