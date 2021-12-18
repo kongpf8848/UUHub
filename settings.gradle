@@ -1,6 +1,6 @@
 rootProject.name = "UUHub"
-include ':lib-base'
-include ':module-app'
+include ':app'
 include ':module-daogenerator'
 include ':module-common'
-include ':lib_githubsdk'
+include ':lib-base'
+include ':lib-githubsdk'

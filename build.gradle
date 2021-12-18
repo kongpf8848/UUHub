@@ -1,6 +1,4 @@
-
 buildscript {
-
     repositories {
         jcenter()
         google()
@@ -10,6 +8,7 @@ buildscript {
         classpath "com.android.tools.build:gradle:${Versions.PLUGIN_GRADLE_VERSION}"
         classpath "com.novoda:gradle-build-properties-plugin:${Versions.PLUGIN_NOVODA_VERSION}"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN_VERSION}"
+        classpath "org.greenrobot:greendao-gradle-plugin:${Versions.GREEN_DAO_VERSION}"
     }
 }
 

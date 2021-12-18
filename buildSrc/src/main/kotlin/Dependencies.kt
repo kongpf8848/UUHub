@@ -16,9 +16,9 @@ object Config{
 
 object Versions {
 
-    const val PLUGIN_GRADLE_VERSION="4.1.0"
+    const val PLUGIN_GRADLE_VERSION="3.6.3"
     const val PLUGIN_NOVODA_VERSION="0.3"
-    const val KOTLIN_VERSION = "1.5.0"
+    const val KOTLIN_VERSION = "1.4.0"
     const val JUNIT_VERSION="4.12"
 
     const val ANDROIDX_APP_COMPAT_VERSION = "1.2.0"
