@@ -1,5 +1,7 @@
-apply plugin: 'com.android.application'
-apply plugin: 'com.novoda.build-properties'
+plugins{
+    id 'com.android.application'
+    id 'com.novoda.build-properties'
+}
 
 buildProperties {
     getPublic {
@@ -29,7 +31,6 @@ android {
         buildConfigField "String", "DEBUG_BUGLY_ID", (buildProperties.getLocal['debug_bugly_appid'] | buildProperties.getPublic['debug_bugly_appid']).string
 
         ndk {
-//            abiFilters 'armeabi', 'armeabi-v7a', 'x86'
             abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
         }
     }
@@ -55,14 +56,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility Config.sourceCompatibilityVersion
+        targetCompatibility Config.targetCompatibilityVersion
     }
 
     lintOptions {
         checkReleaseBuilds true
-        // Or, if you prefer, you can continue to check for errors in release builds,
-        // but continue the build even when errors are found:
         abortOnError false
     }
 
@@ -89,12 +88,15 @@ android {
 
 repositories {
     flatDir {
-        dirs 'libs' //aar
+        dirs 'libs'
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api project(':lib-base')
+    api project(':lib_githubsdk')
 
     testImplementation BuildDependencies.junit
     implementation AndroidX.appCompat
@@ -106,24 +108,14 @@ dependencies {
     implementation AndroidX.annotationX
     implementation AndroidX.browser
 
-    api project(':lib-base')
-    api project(':lib_githubsdk')
+    implementation BuildDependencies.dataAutoAccess
+    annotationProcessor BuildDependencies.dataAutoAccessCompiler
 
- //   implementation "com.android.support.constraint:constraint-layout:${Versions.CONSTRAINT_VERSION}"
-//    compile "com.android.support:multidex:${MULTIDEX_VERSION}"
+    implementation BuildDependencies.bufferknife
+    annotationProcessor BuildDependencies.bufferknifeCompiler
 
-    implementation "com.thirtydegreesray:dataautoaccess:${Versions.DATAAUTOACCESS_VERSION}"
-    annotationProcessor "com.thirtydegreesray:dataautoaccess-compiler:${Versions.DATAAUTOACCESS_VERSION}"
-
-    implementation "com.jakewharton:butterknife:${Versions.BUTTERKNIFE_VERSION}"
-    annotationProcessor "com.jakewharton:butterknife-compiler:${Versions.BUTTERKNIFE_VERSION}"
-
-    //数据库工具
-    implementation "org.greenrobot:greendao:${Versions.GREEN_DAO_VERSION}"
-    //事件总线
-    implementation "org.greenrobot:eventbus:${Versions.EVENT_BUS_VERSION}"
-    //文件下载
-
+    implementation BuildDependencies.greendao
+    implementation BuildDependencies.eventbus
 
     implementation BuildDependencies.rxjava2
     implementation BuildDependencies.rxAndroid
@@ -135,32 +127,31 @@ dependencies {
         exclude group: 'stax', module: 'stax-api'
         exclude group: 'stax', module: 'stax'
     }
-    implementation "com.squareup.okhttp3:logging-interceptor:${Versions.OKHTTP_VERSION}"
+    implementation BuildDependencies.loggingInterceptor
 
-    //dagger依赖注入
-    implementation "com.google.dagger:dagger:${Versions.DAGGER_VERSION}"
-    annotationProcessor "com.google.dagger:dagger-compiler:${Versions.DAGGER_VERSION}"
+    implementation BuildDependencies.dagger
+    annotationProcessor BuildDependencies.daggerCompiler
 
-    implementation "com.tbruyelle.rxpermissions2:rxpermissions:${Versions.RX_PERMISSION_VERSION}"
+    implementation BuildDependencies.rxPermissions
 
-    implementation "com.github.bumptech.glide:glide:${Versions.GLIDE_VERSION}"
-    annotationProcessor "com.github.bumptech.glide:compiler:${Versions.GLIDE_VERSION}"
+    implementation BuildDependencies.glide
+    annotationProcessor BuildDependencies.glideCompiler
 
-//    compile "com.makeramen:roundedimageview:${ROUNDED_IMAGEVIEW_VERSION}"
-    implementation "de.hdodenhof:circleimageview:${Versions.CIRCLE_IMAGEVIEW_VERSION}"
+    implementation BuildDependencies.circleImageView
 
-    implementation "com.github.GrenderG:Toasty:${Versions.TOASTY_VERSION}"
-    implementation "com.github.daniel-stoneuk:material-about-library:${Versions.MATERIAL_ABOUT_VERSION}"
-    implementation "com.unstoppable:submitbutton:${Versions.SUBMIT_BUTTON_VERSION}"
+    implementation BuildDependencies.toasty
+    implementation BuildDependencies.aboutLibrary
+    implementation BuildDependencies.submitButton
 
-    implementation "com.afollestad.material-dialogs:core:${Versions.MATERIAL_DIALOG_VERSION}"
-    implementation "com.afollestad.material-dialogs:commons:${Versions.MATERIAL_DIALOG_VERSION}"
+    implementation BuildDependencies.materialDialogCore
+    implementation BuildDependencies.materialDialogCommon
 
-    implementation "com.zzhoujay.richtext:richtext:${Versions.RICKTEXT_VERSION}"
-    implementation 'com.zzhoujay.glideimagegetter:glideimagegetter:1.0.5'
+    implementation BuildDependencies.richtext
+    implementation BuildDependencies.glideImageGetter
 
-    implementation "com.orhanobut:logger:${Versions.LOGGER_VERSION}"
-    implementation "com.timehop.stickyheadersrecyclerview:library:${Versions.STICKY_HEAD_VERSION}"
+    implementation BuildDependencies.logger
+    implementation BuildDependencies.stickyHeaders
 
-    implementation "org.jsoup:jsoup:${Versions.JSOUP_VERSION}"
+    implementation BuildDependencies.jsoup
+
 }

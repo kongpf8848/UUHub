@@ -80,7 +80,7 @@ object Versions {
     const val LOGGER_VERSION = "2.1.1"
     const val STICKY_HEAD_VERSION = "0.4.3"
     const val JSOUP_VERSION = "1.11.2"
-
+    const val GLIDE_IMAGE_GETTER_VERSION="1.0.5"
 
 }
 
@@ -95,6 +95,29 @@ object BuildDependencies {
     const val retrofitConverterGson = "com.squareup.retrofit2:converter-gson:${Versions.RETROFIT_VERSION}"
     const val retrofitConvertXml="com.squareup.retrofit2:converter-simplexml:${Versions.RETROFIT_VERSION}"
     const val gson="com.google.code.gson:gson:${Versions.GSON_VERSION}"
+    const val bufferknife="com.jakewharton:butterknife:${Versions.BUTTERKNIFE_VERSION}"
+    const val bufferknifeCompiler="com.jakewharton:butterknife-compiler:${Versions.BUTTERKNIFE_VERSION}"
+    const val greendao="org.greenrobot:greendao:${Versions.GREEN_DAO_VERSION}"
+    const val eventbus="org.greenrobot:eventbus:${Versions.EVENT_BUS_VERSION}"
+    const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.OKHTTP_VERSION}"
+    const val dagger="com.google.dagger:dagger:${Versions.DAGGER_VERSION}"
+    const val daggerCompiler="com.google.dagger:dagger-compiler:${Versions.DAGGER_VERSION}"
+    const val glide="com.github.bumptech.glide:glide:${Versions.GLIDE_VERSION}"
+    const val glideCompiler="com.github.bumptech.glide:compiler:${Versions.GLIDE_VERSION}"
+    const val rxPermissions="com.tbruyelle.rxpermissions2:rxpermissions:${Versions.RX_PERMISSION_VERSION}"
+    const val circleImageView="de.hdodenhof:circleimageview:${Versions.CIRCLE_IMAGEVIEW_VERSION}"
+    const val toasty="com.github.GrenderG:Toasty:${Versions.TOASTY_VERSION}"
+    const val aboutLibrary="com.github.daniel-stoneuk:material-about-library:${Versions.MATERIAL_ABOUT_VERSION}"
+    const val submitButton="com.unstoppable:submitbutton:${Versions.SUBMIT_BUTTON_VERSION}"
+    const val materialDialogCore="com.afollestad.material-dialogs:core:${Versions.MATERIAL_DIALOG_VERSION}"
+    const val materialDialogCommon="com.afollestad.material-dialogs:commons:${Versions.MATERIAL_DIALOG_VERSION}"
+    const val richtext="com.zzhoujay.richtext:richtext:${Versions.RICKTEXT_VERSION}"
+    const val glideImageGetter="com.zzhoujay.glideimagegetter:glideimagegetter:${Versions.GLIDE_IMAGE_GETTER_VERSION}"
+    const val logger="com.orhanobut:logger:${Versions.LOGGER_VERSION}"
+    const val stickyHeaders="com.timehop.stickyheadersrecyclerview:library:${Versions.STICKY_HEAD_VERSION}"
+    const val jsoup="org.jsoup:jsoup:${Versions.JSOUP_VERSION}"
+    const val dataAutoAccess="com.thirtydegreesray:dataautoaccess:${Versions.DATAAUTOACCESS_VERSION}"
+    const val dataAutoAccessCompiler="com.thirtydegreesray:dataautoaccess-compiler:${Versions.DATAAUTOACCESS_VERSION}"
 }
 
 object AndroidX {
