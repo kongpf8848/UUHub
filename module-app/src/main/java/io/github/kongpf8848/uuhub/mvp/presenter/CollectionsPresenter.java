@@ -22,9 +22,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 import okhttp3.ResponseBody;
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by ThirtyDegreesRay on 2017/12/25 15:16:34

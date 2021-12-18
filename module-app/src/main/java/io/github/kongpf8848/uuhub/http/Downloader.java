@@ -13,7 +13,8 @@ import android.os.Environment;
 import android.widget.Toast;
 
 import com.orhanobut.logger.Logger;
-import com.tbruyelle.rxpermissions.RxPermissions;
+import com.tbruyelle.rxpermissions2.RxPermissions;
+
 import io.github.kongpf8848.uuhub.R;
 import io.github.kongpf8848.uuhub.ui.activity.base.BaseActivity;
 import io.github.kongpf8848.uuhub.util.AppUtils;

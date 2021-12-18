@@ -12,8 +12,10 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 
-import com.orhanobut.logger.Logger;
 import com.thirtydegreesray.dataautoaccess.DataAutoAccess;
+
+import io.github.kongpf8848.githubsdk.GitHubSdk;
+import io.github.kongpf8848.githubsdk.service.LoginService;
 import io.github.kongpf8848.uuhub.AppConfig;
 import io.github.kongpf8848.uuhub.AppData;
 import io.github.kongpf8848.uuhub.R;
@@ -22,7 +24,6 @@ import io.github.kongpf8848.uuhub.dao.DaoSession;
 import io.github.kongpf8848.uuhub.http.CommitService;
 import io.github.kongpf8848.uuhub.http.GitHubWebPageService;
 import io.github.kongpf8848.uuhub.http.IssueService;
-import io.github.kongpf8848.uuhub.http.LoginService;
 import io.github.kongpf8848.uuhub.http.NotificationsService;
 import io.github.kongpf8848.uuhub.http.OpenHubService;
 import io.github.kongpf8848.uuhub.http.RepoService;
@@ -50,13 +51,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import retrofit2.Response;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-
+import retrofit2.Retrofit;
 
 /**
  * BasePresenter
@@ -71,7 +72,7 @@ public abstract class BasePresenter<V extends IBaseContract.View> implements IBa
     //db Dao
     protected DaoSession daoSession;
 
-    private ArrayList<Subscriber<?>> subscribers;
+    private ArrayList<ObservableSource<?>> subscribers;
     private boolean isEventSubscriber = false;
     private boolean isViewInitialized = false;
 
@@ -113,12 +114,12 @@ public abstract class BasePresenter<V extends IBaseContract.View> implements IBa
     public void detachView() {
         mView = null;
         //view 取消绑定时，把请求取消订阅
-        for (Subscriber subscriber : subscribers) {
-            if (subscriber != null && !subscriber.isUnsubscribed()) {
-                subscriber.unsubscribe();
-                Logger.d(TAG, "unsubscribe:" + subscriber.toString());
-            }
-        }
+//        for (ObservableSource subscriber : subscribers) {
+//            if (subscriber != null && !subscriber.isUnsubscribed()) {
+//                subscriber.unsubscribe();
+//                Logger.d(TAG, "unsubscribe:" + subscriber.toString());
+//            }
+//        }
         if (isEventSubscriber) AppEventBus.INSTANCE.getEventBus().unregister(this);
     }
 
@@ -131,23 +132,7 @@ public abstract class BasePresenter<V extends IBaseContract.View> implements IBa
         return isViewInitialized;
     }
 
-    /**
-     * Retrofit
-     *
-     * @return Retrofit
-     */
 
-    protected LoginService getLoginService() {
-        return AppRetrofit.INSTANCE
-                .getRetrofit(AppConfig.GITHUB_BASE_URL, null)
-                .create(LoginService.class);
-    }
-
-    protected LoginService getLoginService(String token) {
-        return AppRetrofit.INSTANCE
-                .getRetrofit(AppConfig.GITHUB_API_BASE_URL, token)
-                .create(LoginService.class);
-    }
 
     protected UserService getUserService(String token) {
         return AppRetrofit.INSTANCE
@@ -238,7 +223,7 @@ public abstract class BasePresenter<V extends IBaseContract.View> implements IBa
             @NonNull Observable<Response<T>> observable, @Nullable HttpSubscriber<T> subscriber) {
 
         if (subscriber != null) {
-            subscribers.add(subscriber);
+            //subscribers.add(subscriber);
             observable.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(subscriber);
@@ -325,7 +310,7 @@ public abstract class BasePresenter<V extends IBaseContract.View> implements IBa
     }
 
     public void rxDBExecute(@NonNull Runnable runnable){
-        daoSession.rxTx().run(runnable).subscribe();
+        //daoSession.rxTx().run(runnable).subscribe();
     }
 
 

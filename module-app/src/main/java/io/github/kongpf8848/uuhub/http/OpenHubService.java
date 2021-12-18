@@ -9,11 +9,11 @@ import io.github.kongpf8848.uuhub.mvp.model.TrendingLanguage;
 
 import java.util.ArrayList;
 
+import io.reactivex.Observable;
 import retrofit2.Response;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.Query;
-import rx.Observable;
 
 /**
  * This link are for OpenHub only. Please do not use this endpoint in your applications.

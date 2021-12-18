@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 
 import io.github.kongpf8848.uuhub.mvp.model.WikiFeedModel;
 
+import io.reactivex.Observable;
 import okhttp3.ResponseBody;
 import retrofit2.Response;
 import retrofit2.http.GET;
@@ -11,7 +12,6 @@ import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
-import rx.Observable;
 
 /**
  * Created by ThirtyDegreesRay on 2017/12/25 15:30:56

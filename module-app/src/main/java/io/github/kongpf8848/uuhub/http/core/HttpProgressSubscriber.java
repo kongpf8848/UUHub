@@ -25,13 +25,12 @@ public class HttpProgressSubscriber<T> extends HttpSubscriber<T> {
     @Override
     public void onStart() {
         super.onStart();
-        if (!isUnsubscribed())
-            mDialog.show();
+        mDialog.show();
     }
 
     @Override
-    public void onCompleted() {
-        super.onCompleted();
+    public void onComplete() {
+        super.onComplete();
         mDialog.dismiss();
     }
 

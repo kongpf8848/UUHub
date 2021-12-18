@@ -62,6 +62,8 @@ public abstract class
 BaseActivity<P extends IBaseContract.Presenter>
         extends AppCompatActivity implements IBaseContract.View{
 
+    protected final String TAG = getClass().getSimpleName();
+
     @Inject
     protected P mPresenter;
     private ProgressDialog mProgressDialog;

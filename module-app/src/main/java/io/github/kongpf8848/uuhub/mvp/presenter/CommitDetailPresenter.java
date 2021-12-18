@@ -20,7 +20,7 @@ import io.github.kongpf8848.uuhub.util.StringUtils;
 import javax.inject.Inject;
 
 import retrofit2.Response;
-import rx.Observable;
+import io.reactivex.Observable;
 
 /**
  * Created by ThirtyDegreesRay on 2017/10/18 11:31:06

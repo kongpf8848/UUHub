@@ -7,13 +7,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import io.github.kongpf8848.uuhub.AppApplication;
-import io.github.kongpf8848.uuhub.AppConfig;
-import io.github.kongpf8848.uuhub.AppData;
-import io.github.kongpf8848.uuhub.util.FileUtil;
-import io.github.kongpf8848.uuhub.util.NetHelper;
-import io.github.kongpf8848.uuhub.util.StringUtils;
-
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -23,6 +16,12 @@ import java.util.Locale;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
+import io.github.kongpf8848.uuhub.AppApplication;
+import io.github.kongpf8848.uuhub.AppConfig;
+import io.github.kongpf8848.uuhub.AppData;
+import io.github.kongpf8848.uuhub.util.FileUtil;
+import io.github.kongpf8848.uuhub.util.NetHelper;
+import io.github.kongpf8848.uuhub.util.StringUtils;
 import okhttp3.Cache;
 import okhttp3.CacheControl;
 import okhttp3.HttpUrl;
@@ -32,7 +31,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
@@ -65,7 +64,7 @@ public enum  AppRetrofit {
 
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(baseUrl)
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpClient);
 
         if(isJson){

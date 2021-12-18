@@ -2,14 +2,17 @@
 
 package io.github.kongpf8848.uuhub.http.core;
 
+import androidx.annotation.NonNull;
+
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 import retrofit2.Response;
-import rx.Subscriber;
 
 /**
  * 网络请求订阅者，处理网络请求的返回，判断数据有效性，同时处理网络请求异常情况<br>
  * Created by ThirtyDegreesRay on 2016/7/15 11:19
  */
-public class HttpSubscriber<T> extends Subscriber<Response<T>> {
+public class HttpSubscriber<T> implements Observer<Response<T>> {
 
     private HttpObserver<T> mObserver;
 
@@ -21,7 +24,7 @@ public class HttpSubscriber<T> extends Subscriber<Response<T>> {
     }
 
     @Override
-    public void onCompleted() {
+    public void onComplete() {
 
     }
 
@@ -32,13 +35,18 @@ public class HttpSubscriber<T> extends Subscriber<Response<T>> {
     }
 
     @Override
+    public void onSubscribe(@NonNull Disposable d) {
+        onStart();
+    }
+
+    @Override
     public void onNext(Response<T> r) {
         if (mObserver != null)
             mObserver.onSuccess(new HttpResponse<>(r));
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
+    public void onStart(){
+
     }
+
 }

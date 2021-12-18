@@ -1,153 +1,122 @@
-
-
 package io.github.kongpf8848.uuhub.mvp.presenter;
 
 import android.content.Intent;
 import android.net.Uri;
-import androidx.annotation.NonNull;
 
-import io.github.kongpf8848.uuhub.AppConfig;
-import io.github.kongpf8848.uuhub.AppData;
-import io.github.kongpf8848.uuhub.dao.AuthUser;
-import io.github.kongpf8848.uuhub.dao.AuthUserDao;
-import io.github.kongpf8848.uuhub.dao.DaoSession;
-import io.github.kongpf8848.uuhub.http.core.HttpObserver;
-import io.github.kongpf8848.uuhub.http.core.HttpResponse;
-import io.github.kongpf8848.uuhub.http.core.HttpSubscriber;
-import io.github.kongpf8848.uuhub.http.model.AuthRequestModel;
-import io.github.kongpf8848.uuhub.mvp.contract.ILoginContract;
-import io.github.kongpf8848.uuhub.mvp.model.BasicToken;
-import io.github.kongpf8848.uuhub.mvp.model.OauthToken;
-import io.github.kongpf8848.uuhub.mvp.model.User;
-import io.github.kongpf8848.uuhub.mvp.presenter.base.BasePresenter;
-import io.github.kongpf8848.uuhub.util.StringUtils;
+import androidx.annotation.NonNull;
 
 import java.util.Date;
 import java.util.UUID;
 
 import javax.inject.Inject;
 
-import okhttp3.Credentials;
-import retrofit2.Response;
-import rx.Observable;
+import io.github.kongpf8848.baselib.utils.DateHelper;
+import io.github.kongpf8848.githubsdk.GitHubSdk;
+import io.github.kongpf8848.githubsdk.http.GitHubHttpCallback;
+import io.github.kongpf8848.githubsdk.model.OauthToken;
+import io.github.kongpf8848.uuhub.AppConfig;
+import io.github.kongpf8848.uuhub.AppData;
+import io.github.kongpf8848.uuhub.dao.AuthUser;
+import io.github.kongpf8848.uuhub.dao.AuthUserDao;
+import io.github.kongpf8848.uuhub.dao.DaoSession;
+import io.github.kongpf8848.uuhub.mvp.contract.ILoginContract;
+import io.github.kongpf8848.uuhub.mvp.model.BasicToken;
+import io.github.kongpf8848.uuhub.mvp.model.User;
+import io.github.kongpf8848.uuhub.mvp.presenter.base.BasePresenter;
+import io.github.kongpf8848.uuhub.util.StringUtils;
 
-/**
- * Created on 2017/7/12.
- *
- * @author ThirtyDegreesRay
- */
 
-public class LoginPresenter extends BasePresenter<ILoginContract.View>
-        implements ILoginContract.Presenter {
+public class LoginPresenter extends BasePresenter<ILoginContract.View> implements ILoginContract.Presenter {
 
     @Inject
     public LoginPresenter(DaoSession daoSession) {
         super(daoSession);
     }
 
-    @Override
-    public void getToken(String code, String state) {
-        Observable<Response<OauthToken>> observable =
-                getLoginService().getAccessToken(AppConfig.OPENHUB_CLIENT_ID,
-                        AppConfig.OPENHUB_CLIENT_SECRET, code, state);
-
-        HttpSubscriber<OauthToken> subscriber =
-                new HttpSubscriber<>(
-                        new HttpObserver<OauthToken>() {
-                            @Override
-                            public void onError(@NonNull Throwable error) {
-                                mView.dismissProgressDialog();
-                                mView.showErrorToast(getErrorTip(error));
-                            }
-
-                            @Override
-                            public void onSuccess(@NonNull HttpResponse<OauthToken> response) {
-                                OauthToken token = response.body();
-                                if (token != null) {
-                                    mView.onGetTokenSuccess(BasicToken.generateFromOauthToken(token));
-                                } else {
-                                    mView.onGetTokenError(response.getOriResponse().message());
-                                }
-                            }
-                        }
-                );
-        generalRxHttpExecute(observable, subscriber);
-        mView.showProgressDialog(getLoadTip());
-    }
-
     @NonNull
     @Override
     public String getOAuth2Url() {
-        String randomState = UUID.randomUUID().toString();
-        return AppConfig.OAUTH2_URL +
-                "?client_id=" + AppConfig.OPENHUB_CLIENT_ID +
-                "&scope=" + AppConfig.OAUTH2_SCOPE +
-                "&state=" + randomState;
+        String state = UUID.randomUUID().toString();
+        return String.format("%s?client_id=%s&scope=%s&state=%s",AppConfig.OAUTH2_URL,AppConfig.OPENHUB_CLIENT_ID,AppConfig.OAUTH2_SCOPE,state);
     }
 
-    @Override
-    public void basicLogin(String userName, String password) {
-        AuthRequestModel authRequestModel = AuthRequestModel.generate();
-        String token = Credentials.basic(userName, password);
-        Observable<Response<BasicToken>> observable =
-                getLoginService(token).authorizations(authRequestModel);
-        HttpSubscriber<BasicToken> subscriber =
-                new HttpSubscriber<>(
-                        new HttpObserver<BasicToken>() {
-                            @Override
-                            public void onError(@NonNull Throwable error) {
-//                                mView.dismissProgressDialog();
-                                mView.onGetTokenError(getErrorTip(error));
-                            }
-
-                            @Override
-                            public void onSuccess(@NonNull HttpResponse<BasicToken> response) {
-                                BasicToken token = response.body();
-                                if (token != null) {
-                                    mView.onGetTokenSuccess(token);
-                                } else {
-                                    mView.onGetTokenError(response.getOriResponse().message());
-                                }
-
-                            }
-                        }
-                );
-        generalRxHttpExecute(observable, subscriber);
-//        mView.showProgressDialog(getLoadTip());
-    }
 
     @Override
     public void handleOauth(Intent intent) {
         Uri uri = intent.getData();
         if (uri != null) {
             String code = uri.getQueryParameter("code");
-            String state = uri.getQueryParameter("state");
-            getToken(code, state);
+            getToken(code);
         }
     }
 
+
+    @Override
+    public void getToken(String code) {
+
+        GitHubSdk.getInstance().getAccessToken(AppConfig.OPENHUB_CLIENT_ID, AppConfig.OPENHUB_CLIENT_SECRET, code, new GitHubHttpCallback<OauthToken>() {
+
+            @Override
+            public void onStart() {
+                super.onStart();
+                mView.showProgressDialog(getLoadTip());
+            }
+
+            @Override
+            public void onNext(OauthToken response) {
+                mView.onGetTokenSuccess(BasicToken.generateFromOauthToken(response));
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                mView.dismissProgressDialog();
+                mView.showErrorToast(getErrorTip(e));
+            }
+        });
+    }
+
+
     @Override
     public void getUserInfo(final BasicToken basicToken) {
-        HttpSubscriber<User> subscriber = new HttpSubscriber<>(
-                new HttpObserver<User>() {
-                    @Override
-                    public void onError(Throwable error) {
-                        mView.dismissProgressDialog();
-                        mView.onGetTokenError(getErrorTip(error));
-                    }
 
-                    @Override
-                    public void onSuccess(HttpResponse<User> response) {
-//                        mView.dismissProgressDialog();
-                        saveAuthUser(basicToken, response.body());
-                        mView.onLoginComplete();
-                    }
-                }
-        );
-        Observable<Response<User>> observable = getUserService(basicToken.getToken()).
-                getPersonInfo(true);
-        generalRxHttpExecute(observable, subscriber);
-        mView.showProgressDialog(getLoadTip());
+        GitHubSdk.getInstance().getUserInfo(new GitHubHttpCallback<io.github.kongpf8848.githubsdk.model.User>() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                mView.showProgressDialog(getLoadTip());
+            }
+
+            @Override
+            public void onNext(io.github.kongpf8848.githubsdk.model.User response) {
+                User user = new User();
+                user.setLogin(response.getLogin());
+                user.setId(String.valueOf(response.getId()));
+                user.setAvatarUrl(response.getAvatarUrl());
+                user.setName(response.getName());
+                user.setBio(response.getBio());
+                user.setFollowers(response.getFollowers());
+                user.setFollowing(response.getFollowing());
+                user.setBlog(response.getBlog());
+                user.setEmail(response.getEmail());
+                user.setType(response.getType().equals("User") ? User.UserType.User : User.UserType.Organization);
+                user.setHtmlUrl(response.getHtmlUrl());
+                user.setLocation(response.getLocation());
+                user.setCompany(response.getCompany());
+                user.setPublicRepos(response.getPublicRepos());
+                user.setPublicGists(response.getPublicGists());
+                user.setCreatedAt(DateHelper.INSTANCE.toDate(response.getCreatedAt(), "yyyy-MM-dd'T'HH:mm:ss'Z'"));
+                user.setUpdatedAt(DateHelper.INSTANCE.toDate(response.getUpdatedAt(), "yyyy-MM-dd'T'HH:mm:ss'Z'"));
+
+                saveAuthUser(basicToken, user);
+                mView.onLoginComplete();
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                mView.dismissProgressDialog();
+                mView.onGetTokenError(getErrorTip(e));
+            }
+        });
 
     }
 

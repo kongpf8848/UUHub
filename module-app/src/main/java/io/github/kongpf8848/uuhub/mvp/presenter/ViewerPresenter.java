@@ -21,7 +21,7 @@ import javax.inject.Inject;
 
 import okhttp3.ResponseBody;
 import retrofit2.Response;
-import rx.Observable;
+import io.reactivex.Observable;
 
 /**
  * Created by ThirtyDegreesRay on 2017/8/19 15:58:43
