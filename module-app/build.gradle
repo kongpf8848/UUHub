@@ -106,7 +106,7 @@ dependencies {
     implementation AndroidX.annotationX
     implementation AndroidX.browser
 
-    api project(':lib_base')
+    api project(':lib-base')
     api project(':lib_githubsdk')
 
  //   implementation "com.android.support.constraint:constraint-layout:${Versions.CONSTRAINT_VERSION}"
